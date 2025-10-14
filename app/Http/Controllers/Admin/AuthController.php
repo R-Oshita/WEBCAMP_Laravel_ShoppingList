@@ -11,11 +11,12 @@ class AuthController extends Controller
 {
     //
 
-     public function index(){
+    public function index()
+    {
         return view('admin.index');
     }
 
-/**
+    /**
      * ログイン処理
      * 
      */
@@ -25,8 +26,9 @@ class AuthController extends Controller
 
         // データの取得
         $datum = $request->validated();
-        // var_dump($datum); exit;
-        
+        // var_dump($datum);
+        // exit;
+
 
         // 認証
         if (Auth::guard('admin')->attempt($datum) === false) {
@@ -38,7 +40,7 @@ class AuthController extends Controller
 
         // 認証に成功した場合
         $request->session()->regenerate();
-        return redirect()->intended('/admin/top');
-    }  
-
+        return redirect()->intended('admin.top');
+        // return redirect('/admin/top');
+    }
 }

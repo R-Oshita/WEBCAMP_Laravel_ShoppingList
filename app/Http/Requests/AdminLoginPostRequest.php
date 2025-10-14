@@ -27,14 +27,5 @@ class AdminLoginPostRequest extends FormRequest
         ];
     }
 
-       /**
-     * ユーザーフレンドリーな属性名を設定
-     */
-    public function attributes(): array
-    {
-        return [
-            'login_id' => 'id',
-            'password' => 'pass',
-        ];
-    }
+
 }

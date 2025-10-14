@@ -13,7 +13,7 @@
 @endif
 
 
-<form action="/login" method="post">
+<form action="/admin/top" method="post">
     @csrf
     ログインID：<input type="text" name="login_id" value="{{ old('login_id') }}"><br>
     パスワード：<input type="password" name="password"><br>
