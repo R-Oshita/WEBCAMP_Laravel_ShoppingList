@@ -1,4 +1,6 @@
-@extends('layout')
+@extends('admin.layout')
+{{-- タイトル --}}
+@section('title')@endsection
 
 
 {{-- メインコンテンツ--}}
@@ -13,7 +15,7 @@
 @endif
 
 
-<form action="/admin/top" method="post">
+<form action="/admin/login" method="post">
     @csrf
     ログインID：<input type="text" name="login_id" value="{{ old('login_id') }}"><br>
     パスワード：<input type="password" name="password"><br>

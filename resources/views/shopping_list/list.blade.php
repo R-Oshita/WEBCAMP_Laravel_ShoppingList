@@ -1,10 +1,24 @@
+@extends('layout')
+
+{{-- タイトル --}}
+@section('title')(一覧画面)@endsection
+
+
 <h1>「買うもの」の登録</h1>
 @if (session('front.task_register_success') == true)
-タスクを登録しました！！<br>
+「買うもの」を登録しました！！<br>
 @endif
-@if (session('front.task_completed_failure') == true)
-タスクの完了に失敗しました....<br>
+@if (session('front.shopping_completed_success') == true)
+「買うもの」を完了にしました！！<br>
 @endif
+@if (session('front.shopping_completed_failure') == true)
+「買うもの」の完了に失敗しました....<br>
+@endif
+@if (session('front.item_delete_success') == true)
+「買うもの」を削除しました！！<br>
+@endif
+
+
 @if ($errors->any())
 <div>
     @foreach ($errors->all() as $error)
@@ -34,13 +48,13 @@
         <td>
             <form action="{{ route('complete', ['item_id' => $item->id]) }}" method="post">
                 @csrf
-                <button onclick='return confirm("このタスクを「完了」にします。よろしいですか？");'>完了</button>
+                <button onclick='return confirm("この「買うもの」を「完了」にします。よろしいですか？");'>完了</button>
             </form>
         <td>
             <form action="{{ route('delete', ['item_id' => $item->id]) }}" method="post">
                 @csrf
                 @method("DELETE")
-                <button onclick='return confirm("このタスクを削除します。よろしいですか？");'>削除</button>
+                <button onclick='return confirm("この「買うもの」を削除します。よろしいですか？");'>削除</button>
             </form>
             @endforeach
 </table>

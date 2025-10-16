@@ -1,7 +1,7 @@
 @extends('layout')
 
 {{-- タイトル --}}
-@section('title')(詳細画面)@endsection
+@section('title')(購入済み「買うもの」一覧画面)@endsection
 
 {{-- メインコンテンツ --}}
 @section('contents')

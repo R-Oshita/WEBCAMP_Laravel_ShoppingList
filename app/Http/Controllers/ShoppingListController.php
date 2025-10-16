@@ -141,7 +141,8 @@ class ShoppingListController extends Controller
             // exit;
 
             DB::commit(); // トランザクション終了
-
+   // 完了メッセージ出力
+            $request->session()->flash('front.shopping_completed_success', true);
         } catch (\Throwable $e) {
             // デバッグ用の一時停止コードを削除し、ロールバックとリダイレクトに戻します
             // var_dump($e->getMessage());

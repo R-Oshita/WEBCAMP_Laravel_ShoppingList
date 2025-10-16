@@ -33,14 +33,26 @@ class AuthController extends Controller
         // 認証
         if (Auth::guard('admin')->attempt($datum) === false) {
             return back()
-                   ->withInput() // 入力値の保持
-                   ->withErrors(['auth' => 'ログインIDかパスワードに誤りがあります。',]) // エラーメッセージの出力
-                   ;
+                ->withInput() // 入力値の保持
+                ->withErrors(['auth' => 'ログインIDかパスワードに誤りがあります。',]) // エラーメッセージの出力
+            ;
         }
 
         // 認証に成功した場合
         $request->session()->regenerate();
-        return redirect()->intended('admin.top');
+        return redirect()->intended('admin/top');
         // return redirect('/admin/top');
+    }
+
+    /**
+     * ログアウト処理
+     * 
+     */
+    public function logout(Request $request)
+    {
+        Auth::guard('admin')->logout();
+        $request->session()->regenerateToken();
+        $request->session()->regenerate();
+        return redirect(route('admin.index'));
     }
 }
