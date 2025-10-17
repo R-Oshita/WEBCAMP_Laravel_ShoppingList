@@ -23,7 +23,7 @@
     @foreach ($completed_shopping_list as $completedItem)
     <tr>
         <td>{{ $completedItem->name }}
-        <td>{{ $completedItem->created_at }}
+        <td>{{ $completedItem->created_at->format('Y/m/d') }}
             @endforeach
 </table>
 <!-- ページネーション -->

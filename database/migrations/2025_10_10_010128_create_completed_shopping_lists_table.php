@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->comment('この買うもの名の所有者');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); // 外部キー制約
-            $table->string('name', 128)->comment('「買うもの」名');
+            $table->string('name', 255)->comment('「買うもの」名');
             $table->datetime('registered_at')->comment('元の登録日');
             $table->dateTime('created_at')->useCurrent()->comment('購入日');
             $table->dateTime('updated_at')->useCurrent()->useCurrentOnUpdate();
