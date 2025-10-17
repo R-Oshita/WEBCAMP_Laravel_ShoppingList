@@ -28,7 +28,7 @@
 @endif
 <form action="/shopping_list/register" method="post">
     @csrf
-    「買うもの」名:<input type="text" name="name" value="{{ old('name') }}"><br>
+    「買うもの」名：<input type="text" name="name" value="{{ old('name') }}"><br>
     <button>「買うもの」を登録する</button>
 </form>
 
@@ -41,17 +41,18 @@
     </tr>
     @foreach ($list as $item)
     <tr>
-        <th>{{ $item->created_at->format('Y/m/d') }}</th>
+        <td>{{ $item->created_at->format('Y/m/d') }}</td>
         <td>{{ $item->name }}
 
 
         <td>
-            <form action="{{ route('complete', ['item_id' => $item->id]) }}" method="post">
+            <form action="{{ route('complete', ['item_id' => $item->id]) }}" method="post" style="margin-block-end:0;">
                 @csrf
                 <button onclick='return confirm("この「買うもの」を「完了」にします。よろしいですか？");'>完了</button>
             </form>
+            <td style="width: 15px;"></td>
         <td>
-            <form action="{{ route('delete', ['item_id' => $item->id]) }}" method="post">
+            <form action="{{ route('delete', ['item_id' => $item->id]) }}" method="post" style="margin-block-end:0;">
                 @csrf
                 @method("DELETE")
                 <button onclick='return confirm("この「買うもの」を削除します。よろしいですか？");'>削除</button>

@@ -13,7 +13,7 @@
 @endif
 
 @if (session('front.user_register_success') == true)
-ユーザーを登録しました！！<br>
+ユーザを登録しました！！<br>
 @endif
     <form action="/login" method="post">
         @csrf
