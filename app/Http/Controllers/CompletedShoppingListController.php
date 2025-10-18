@@ -18,6 +18,8 @@ class CompletedShoppingListController extends Controller
         
         // completedlisttaskテーブルから情報を取得
         $list = CompletedShoppingListModel::where('user_id', Auth::id())
+            ->orderBy('name')
+            ->orderBy('created_at','ASC')
             ->paginate($per_page);
 
          return view('completed_shopping_list',['completed_shopping_list'=> $list]);
