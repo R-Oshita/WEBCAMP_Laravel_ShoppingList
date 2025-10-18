@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('shopping_lists', function (Blueprint $table) {
             $table->id();
-             $table->string('name', 128)->comment('買うもの名(商品名)');
-             $table->unsignedBigInteger('user_id')->comment('この買うもの名の所有者');
-             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); // 外部キー制約
+            $table->string('name', 255)->comment('買うもの名(商品名)');
+            $table->unsignedBigInteger('user_id')->comment('この買うもの名の所有者');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); // 外部キー制約
             // $table->timestamps();
             $table->dateTime('created_at')->useCurrent();
             $table->dateTime('updated_at')->useCurrent()->useCurrentOnUpdate();
