@@ -50,7 +50,7 @@
                 @csrf
                 <button onclick='return confirm("この「買うもの」を「完了」にします。よろしいですか？");'>完了</button>
             </form>
-            <td style="width: 15px;"></td>
+        <td style="width: 15px;"></td>
         <td>
             <form action="{{ route('delete', ['item_id' => $item->id]) }}" method="post" style="margin-block-end:0;">
                 @csrf

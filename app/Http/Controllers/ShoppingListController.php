@@ -113,8 +113,7 @@ class ShoppingListController extends Controller
                 throw new \Exception('');
             }
 
-            // 元のアイテムの created_at を一時的に保存（これが新しいテーブルの registered_at になる）
-            $original_created_at = $item->created_at;
+    
 
             // tasks側を削除する
             $item->delete();
@@ -122,7 +121,6 @@ class ShoppingListController extends Controller
             // completed_tasks側にinsertする
             $dask_datum = $item->toArray();
             // 必要な registered_at を元の created_at の値で追加する
-            $dask_datum['registered_at'] = $original_created_at;
 
             unset($dask_datum['id']);
             unset($dask_datum['created_at']);
